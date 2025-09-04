@@ -43,20 +43,30 @@ public class MainActivity extends AppCompatActivity {
 
             double weight = Double.parseDouble(weightStr);
             double height = Double.parseDouble(heightStr);
-            double heightf = height / 100.0;
+            double heightf = height / 100.0; // From Centimeters to Meters
 
             double bmi = weight / (heightf * heightf);
 
             String bmiCategory;
-            if (bmi < 18.5) {
+            if (bmi < 15) {
+                bmiCategory = "Very severely underweight";
+            }else if (bmi < 16) {
+                bmiCategory = "Severely Underweight";
+            }else if (bmi < 18.5) {
                 bmiCategory = "Underweight";
-            } else if (bmi < 24.9) {
+            } else if (bmi < 25) {
                 bmiCategory = "Normal weight";
-            } else if (bmi < 29.9) {
+            } else if (bmi < 30) {
                 bmiCategory = "Overweight";
-            } else {
-                bmiCategory = "Obese";
+            } else if (bmi < 35) {
+                bmiCategory = "Obese Class 1 - Moderately Obese";
+            }else if (bmi < 40) {
+                bmiCategory = "Obese Class 2 - Severely Obese";
+            }else {
+                bmiCategory = "Obese Class 3 - Very Severely Obese";
+
             }
+
 
             result.setText(String.format("BMI: %.2f (%s)", bmi, bmiCategory));
         });
